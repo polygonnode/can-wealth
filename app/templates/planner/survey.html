@@ -21,18 +21,58 @@
               <div class="progress-bar " role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
             </div>
             <br>
-            <div class="question-title">
-              How old are you?
+            <div class="first-question" id="qOne">
+              <div class="question-title">
+                How old are you?
+              </div>
+              <div id="myAge" class="range-display">
+                <span class="badge badge-pill badge-primary">0</span>
+              </div>
+              <div class="slidecontainer" >
+                <input type="range" min="1" max="100" value="50" class="slider" id="ageRange" >
+              </div>
             </div>
-            <div id="myAge">
-              0
+            <div class="" id="qTwo">
+              <div class="question-title">
+                How much would you like to save?
+              </div>
+              <div id="myGoal" class="range-display">
+                <span class="badge badge-pill badge-primary">0</span>
+
+              </div>
+
+              <div class="slidecontainer" style="padding:0;" >
+                <input type="range" min="0" max="100" step="" value="0" class="slider" id="goalRange" >
+              </div>
             </div>
-            <div class="slidecontainer" >
-              <input type="range" min="1" max="100" value="50" class="slider" id="ageRange" >
+            <div class="" id="qThree">
+              <div class="question-title">
+                What is your goal you want to save for?
+              </div>
+              <div class="text-input-wrapper">
+                <input type="email" class="form-control" id="" placeholder="">
+              </div>
+              <div class="slidecontainer" style="padding:0;" >
+                <input type="range" min="0" max="100" step="" value="0" class="slider" id="goalRange" >
+              </div>
             </div>
+            <div class="" id="qFour">
+              <div class="question-title">
+                How much do you think you can save each month?
+              </div>
+              <div id="myGoal" class="range-display">
+                <span class="badge badge-pill badge-primary">0</span>
+
+              </div>
+
+              <div class="slidecontainer" style="padding:0;" >
+                <input type="range" min="0" max="100" step="" value="0" class="slider" id="goalRange" >
+              </div>
+            </div>
+
           </div>
-          <div class="col">
-            <a class="btn btn-primary" href="#" role="button">Link &laquo;</a>
+          <div class="text-right">
+           <a class="btn btn-primary" href="#" role="button">Next &raquo;</a>
           </div>
 
 
@@ -46,7 +86,11 @@
 </div>
 <script>
 document.addEventListener("mousemove", function(){
-    document.getElementById("myAge").innerHTML = document.getElementById("ageRange").value;
+    document.getElementById("myAge").innerHTML = '<span class="badge badge badge-secondary">'+document.getElementById("ageRange").value + '</span>';
+    var goal =  document.getElementById("goalRange").value;
+    if(goal)
+    document.getElementById("myGoal").innerHTML = '<span class="badge badge badge-success">'+document.getElementById("goalRange").value + '</span>';
 });
+
 </script>
 {% endblock %}

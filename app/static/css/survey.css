@@ -4,6 +4,13 @@
   min-height: 300px
 
 }
+.question-wrapper{
+  display:none;
+}
+.first-question{
+  display:block;
+}
+
 .question-title{
   font-size:1.5rem;
 
@@ -14,9 +21,18 @@
     padding-left:20%;
       padding-right:20%;
 }
+.text-input-wrapper{
+  padding-top:2.5rem;
+  padding-right:10%;
+  padding-left:10%;
+}
 #myAge{
-  font-size:1.5rem;
+
+}
+.range-display{
+  font-size:2.5rem;
   padding-bottom:0.5rem;
+
 }
 
 /* The slider itself */
