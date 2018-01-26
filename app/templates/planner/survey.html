@@ -1,15 +1,52 @@
 {% extends "layout.html" %}
 {% block title %} Survey {% endblock %}
 {% block body %}
+<link href="{{ url_for('static', filename = 'lib/css/bootstrap.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ url_for('static', filename = 'css/survey.css') }}" rel="stylesheet" type="text/css" />
 <div class="container">
+  <br>
   <div class="row">
     <div class="col-lg-3 col-md-2">
 
     </div>
     <div class="col-lg-6 col-md-8">
-      <div class="card">
+      <div class="card text-center">
+        <div class="survey-wrap">
 
+
+          <div class="survey-wrap">
+            <h2>RoboFinancial Planner</h2>
+            <br>
+            <div class="progress">
+              <div class="progress-bar " role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+            </div>
+            <br>
+            <div class="question-title">
+              How old are you?
+            </div>
+            <div id="myAge">
+              0
+            </div>
+            <div class="slidecontainer" >
+              <input type="range" min="1" max="100" value="50" class="slider" id="ageRange" >
+            </div>
+          </div>
+          <div class="col">
+            <a class="btn btn-primary" href="#" role="button">Link &laquo;</a>
+          </div>
+
+
+
+
+          <div class="ex1Slider" role="slider" aria-valuemin="-5" aria-valuemax="20" aria-valuenow="9" aria-valuetext="Current value: 9" tabindex="0" style="left: 56%;"></div>
+
+        </div>
     </div>
   </div>
 </div>
+<script>
+document.addEventListener("mousemove", function(){
+    document.getElementById("myAge").innerHTML = document.getElementById("ageRange").value;
+});
+</script>
 {% endblock %}

@@ -1,0 +1,58 @@
+.survey-wrap{
+
+  padding: 0.5rem;
+  min-height: 300px
+
+}
+.question-title{
+  font-size:1.5rem;
+
+}
+.slidecontainer {
+    width: 100%; /* Width of the outside container */
+    text-align: center;
+    padding-left:20%;
+      padding-right:20%;
+}
+#myAge{
+  font-size:1.5rem;
+  padding-bottom:0.5rem;
+}
+
+/* The slider itself */
+.slider {
+    -webkit-appearance: none;  /* Override default CSS styles */
+    appearance: none;
+    width: 100%; /* Full-width */
+    height: 0.75rem; /* Specified height */
+    background: #d3d3d3; /* Grey background */
+    outline: none; /* Remove outline */
+    opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+    -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+    transition: opacity .2s;
+    border-radius: 0.3rem
+}
+
+/* Mouse-over effects */
+.slider:hover {
+    opacity: 1; /* Fully shown on mouse-over */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    width: 1.5rem; /* Set a specific slider handle width */
+    height: 1.5rem; /* Slider handle height */
+      background: #007bff; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+    border-radius:50%;
+    box-shadow: 1px 1px 0px 0px #888888;
+}
+
+.slider::-moz-range-thumb {
+    width: 25px; /* Set a specific slider handle width */
+    height: 25px; /* Slider handle height */
+    background: #4CAF50; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+}
