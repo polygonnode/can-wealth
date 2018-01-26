@@ -7,8 +7,3 @@ home = Blueprint('home', __name__)
 def index():
     #just return the home page
     return render_template("home/index.html")
-
-
-@home.route("/about")
-def about():
-    return render_template("home/about.html",x=True)
