@@ -5,8 +5,18 @@
     <meta name="viewport" content="width=device-width">
     <title>{% block title %}CAN-Wealth{% endblock %}</title>
     <link href="{{ url_for('static', filename = 'css/index.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ url_for('static', filename = 'lib/css/bootstrap.css') }}" rel="stylesheet" type="text/css" />
   </head>
   <body>
+
+    <!-- Header nav bar containing logo and says that its the beta -->
+    <nav class="navbar navbar-light bg-faded">
+      <a class="navbar-brand" href="#">
+        <img src="/static/images/logo.png"  class="nav navbar-nav navbar-left" alt="">
+      </a>
+
+        <span class="badge badge-danger">Beta</span>
+    </nav>
 
 
   {% block body %}
