@@ -3,6 +3,9 @@
 {% block body %}
 <link href="{{ url_for('static', filename = 'lib/css/bootstrap.css') }}" rel="stylesheet" type="text/css" />
 <link href="{{ url_for('static', filename = 'css/survey.css') }}" rel="stylesheet" type="text/css" />
+<div class="progress survey-bar">
+  <div id="progressBar" class="progress-bar " role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: 5%"></div>
+</div>
 <div class="container">
   <br>
   <div class="row">
@@ -10,17 +13,13 @@
 
     </div>
     <div class="col-lg-6 col-md-8">
-      <div class="card text-center">
+      <div class=" text-center">
         <div class="survey-wrap">
 
 
-          <div class="survey-wrap">
-            <h2>RoboFinancial Planner</h2>
-            <br>
-            <div class="progress">
-              <div id="progressBar" class="progress-bar " role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: 5%"></div>
-            </div>
-            <br>
+
+          <div class="survey-wrap ">
+
             <div class="first-question" id="qOne">
               <div class="question-title">
                 What are you saving for?
@@ -34,7 +33,7 @@
                 How much would you like to save?
               </div>
               <div id="myal" class="range-display">
-                <span class="badge badge badge-success">$<input type="number" id="myGoal" class="blank-input"></span>
+                $<input type="text" id="myGoal" class="blank-input">
 
               </div>
               <div class="slidecontainer" style="padding:0;" >
@@ -45,21 +44,23 @@
               <div class="question-title">
                 How old are you?
               </div>
-              <div id="myAge" class="range-display">
-                <span class="badge badge-pill badge-primary">0</span>
+              <div  class="range-display survey-input-wapper">
+                <span class="badge badge badge-secondary"><input type="number" id="myAge" class="blank-input"></span>
               </div>
               <div class="slidecontainer" >
-                <input type="range" min="1" max="100" value="50" class="slider" id="ageRange" >
+                <input type="range" min="18" max="100" value="25" class="slider" id="ageRange" >
               </div>
             </div>
             <div class="question-wrapper" id="qFour">
               <div class="question-title">
                 What is your average yearly income?
               </div>
-              <div id="myEarnings" class="range-display">
-                <span class="badge badge-pill badge-primary"><input type="number" id="earnings" class="blank-input"></span>
+              <div id="" class="range-display">
+                $<input type="text" id="myEarning" class="blank-input">
               </div>
-
+              <div class="slidecontainer" >
+                <input type="range" min="0" max="60" value="0" class="slider" id="earningRange" >
+              </div>
 
             </div>
             <div class="question-wrapper" id="qFive">
@@ -91,17 +92,14 @@
 
           </div>
           <div class="row">
-            <div class="col">
-              <div class="text-left">
-                <button type="button" id="previous" class="btn btn-primary question-wrapper">&laquo; Previous</button>
-              </div>
+            <div class="col-sm-4 text-left">
+              <img class="" id="previous" src="{{ url_for('static', filename = 'images/next.svg') }}">
             </div>
-            <div class="col">
-              <div class="text-right">
-                <button type="button" id="next" class="btn btn-primary" style="float:right;">Next &raquo;</button>
+            <div class="col-sm-4 text-center">
+              <img class="forward-arrow mx-auto" id="next" src="{{ url_for('static', filename = 'images/play-button.svg') }}">
+            </div>
+          </div>
 
-              </div>
-            </div>
 
 
 
@@ -112,6 +110,7 @@
     </div>
   </div>
 </div>
+</div>
 <script>
 //CONSTANT VARIABLES
 var SURVEY_DIVS = ["qOne","qTwo","qThree","qFour","qFive","qSix"];
@@ -121,18 +120,30 @@ var CURRENT_PANEL = 0;
 document.getElementById("goalName").addEventListener("change", function(){
   SURVEY_RESULTS[0] = document.getElementById("goalName").value;
 });
+document.getElementById("myGoal").addEventListener("change", function(){
+  console.log("99999999".toLocaleString());
+  document.getElementById("myGoal").value = document.getElementById("myGoal").value.toLocaleString();
+});
 document.getElementById("goalRange").addEventListener("mousemove", function(){
   if(mouseDown){
-    document.getElementById("myGoal").value = ((document.getElementById("goalRange").value*20) + (Math.floor(document.getElementById("goalRange").value/50)*80*(document.getElementById("goalRange").value-50)));
+    document.getElementById("myGoal").value = savingScaller((document.getElementById("goalRange").value)).toLocaleString();
   }
 });
 document.getElementById("ageRange").addEventListener("mousemove", function(){
-    document.getElementById("myAge").innerHTML = '<span class="badge badge badge-secondary">'+document.getElementById("ageRange").value + '</span>';
+    document.getElementById("myAge").value = document.getElementById("ageRange").value;
     //document.getElementById("myGoal").innerHTML = '<span class="badge badge badge-success">'+document.getElementById("goalRange").value + '</span>';
 });
+document.getElementById("earningRange").addEventListener("mousemove", function(){
+  if(mouseDown){
+    document.getElementById("myEarning").value =  earningCalculator(document.getElementById("earningRange").value).toLocaleString() ;
+  }
+});
+
 document.getElementById("currentRange").addEventListener("mousemove", function(){
   if(mouseDown){
-    document.getElementById("currentSaved").value = Math.floor(document.getElementById("myGoal").value*(document.getElementById("currentRange").value/100)) ;
+    var percentage = document.getElementById("currentRange").value;
+    var goal = parseInt(document.getElementById("myGoal").value.replace(/\,/g,''));
+    document.getElementById("currentSaved").value =  goal*(percentage/100).toLocaleString();
   }
 });
 
@@ -190,6 +201,33 @@ function updateProgressBar(){
 
     document.getElementById("progressBar").style.width = (((CURRENT_PANEL + 1)/SURVEY_DIVS.length)*100).toString() + "%";
 
+}
+
+//functions relating to the scalling of the Slider
+function savingScaller(slider){
+  if(slider <= 5){ // if it is between 1 and 5 then it is hundreds
+    return slider*100;
+  } else if(slider <= 15){ // inciments of 500 after 500
+    return (slider-4)*500;
+  } else if(slider <= 35){ // incirments of 1000 after 5000
+    return (slider-10)*1000;
+  } else if(slider <= 74){ // incriments of 5000 after 25000 too 120000
+    return (slider-30) * 5000;
+  }else { // last steps are inciments of 10,000
+    return (slider-63) *10000;
+  }
+}
+
+function earningCalculator(slider){
+  if(slider <= 10){ // if it is between 1 and 10 then it is thousands
+    return slider*5000;
+  } else if(slider <= 25){ // inciments of 10000 after 50000 to 20000
+    return (slider-5)*10000;
+  } else if(slider <= 30){ // incirments of 20000 after 200000 to 300000
+    return (slider-15)*20000;
+  } else { // incriments of 50000 after 300000 to 500000
+    return (slider-19) * 50000;
+  }
 }
 
 
