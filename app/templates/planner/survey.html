@@ -20,7 +20,7 @@
 
           <div class="survey-wrap ">
 
-            <div class="first-question" id="qOne">
+            <div class="question-wrapper first-question" id="qOne">
               <div class="question-title">
                 What are you saving for?
               </div>
@@ -68,7 +68,7 @@
                 How much do you have saved up so far?
               </div>
               <div id="myCurrent" class="range-display">
-                <span class="badge badge badge-success"><input type="number" id="currentSaved" class="blank-input"></span>
+                $<input type="text" id="currentSaved" class="blank-input">
 
               </div>
 
@@ -80,13 +80,13 @@
               <div class="question-title">
                 How much do you think you can save each month?
               </div>
-              <div id="myGoal" class="range-display">
-                <span class="badge badge-pill badge-primary">0</span>
+              <div id="" class="range-display">
+                  $<input type="text" id="myContribution" class="blank-input">
 
               </div>
 
               <div class="slidecontainer" style="padding:0;" >
-                <input type="range" min="0" max="100" step="" value="0" class="slider" id="goalRange" >
+                <input type="range" min="0" max="100" step="" value="0" class="slider" id="contributionRange" >
               </div>
             </div>
 
@@ -111,6 +111,7 @@
   </div>
 </div>
 </div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script>
 //CONSTANT VARIABLES
 var SURVEY_DIVS = ["qOne","qTwo","qThree","qFour","qFive","qSix"];
@@ -143,7 +144,14 @@ document.getElementById("currentRange").addEventListener("mousemove", function()
   if(mouseDown){
     var percentage = document.getElementById("currentRange").value;
     var goal = parseInt(document.getElementById("myGoal").value.replace(/\,/g,''));
-    document.getElementById("currentSaved").value =  goal*(percentage/100).toLocaleString();
+    document.getElementById("currentSaved").value =  (goal*(percentage/100)).toLocaleString();
+  }
+});
+document.getElementById("contributionRange").addEventListener("mousemove", function(){
+  if(mouseDown){
+    var percentage = document.getElementById("contributionRange").value;
+
+    document.getElementById("myContribution").value =  ((50*percentage) +(Math.floor(percentage/40)*50*percentage)).toLocaleString();
   }
 });
 
@@ -240,6 +248,16 @@ document.body.onmousedown = function() {
 document.body.onmouseup = function() {
   --mouseDown;
 }
+//for text inputs
+function resizeInput() {
+    $(this).attr('size', $(this).val().length);
+}
+
+$('input[type="text"]')
+    // event handler
+    .keyup(resizeInput)
+    // resize on page load
+    .each(resizeInput);
 
 
 

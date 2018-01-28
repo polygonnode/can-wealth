@@ -4,6 +4,7 @@
 }
 .question-wrapper{
   display:none;
+  min-height:164px;
 }
 
 .first-question{
@@ -51,7 +52,7 @@
   background-color: #0594C7;
 }
 #myGoal{
-  width:10rem;
+
   margin-right: -1rem;
   margin-top:1rem;
   margin-bottom:1rem;
@@ -60,7 +61,27 @@
   width:3rem;
   text-align: center;
   color:white;
+  border-bottom: none;
 
+}
+#myAge:hover{
+  border-bottom: none;
+}
+#myEarning{
+  margin-top:1rem;
+  margin-bottom:1rem;
+}
+#currentSaved{
+  width:9rem;
+  margin-right: -1rem;
+  margin-top:1rem;
+  margin-bottom:1rem;
+}
+#myContribution{
+  width:6rem;
+  margin-right: -1rem;
+  margin-top:1rem;
+  margin-bottom:1rem;
 }
 .survey-input-wapper{
   padding:1rem;
