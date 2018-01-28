@@ -30,14 +30,28 @@
 .blank-input{
   border: none;
   background:none;
-}
-#myAge{
+  font-size:1.5rem;
+  color:white;
+  text-align:center;
 
+}
+.blank-input:focus{
+  border: none;
+
+
+}
+#myGoal{
+  width:10rem;
 }
 .range-display{
   font-size:2.5rem;
   padding-bottom:0.5rem;
 
+}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 /* The slider itself */

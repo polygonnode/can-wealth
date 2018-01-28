@@ -33,11 +33,10 @@
               <div class="question-title">
                 How much would you like to save?
               </div>
-              <div id="myGoal" class="range-display">
-                <span class="badge badge badge-success"><input type="text" id="myGoal" class="blank-input"></span>
+              <div id="myal" class="range-display">
+                <span class="badge badge badge-success"><input type="number" id="myGoal" class="blank-input"></span>
 
               </div>
-                <span class="badge badge-pill badge-primary"><input type="text" class="blank-input"></span>
               <div class="slidecontainer" style="padding:0;" >
                 <input type="range" min="0" max="100" step="" value="0" class="slider" id="goalRange" >
               </div>
@@ -95,12 +94,12 @@
 
           </div>
           <div class="row">
-            <div class="col-sm-6">
+            <div class="col">
               <div class="text-left">
-                <button type="button" id="previous" class="btn btn-primary">&laquo; Previous</button>
+                <button type="button" id="previous" class="btn btn-primary question-wrapper">&laquo; Previous</button>
               </div>
             </div>
-            <div class="col-sm-6">
+            <div class="col">
               <div class="text-right">
                 <button type="button" id="next" class="btn btn-primary" style="float:right;">Next &raquo;</button>
 
@@ -126,7 +125,9 @@ document.getElementById("goalName").addEventListener("change", function(){
   SURVEY_RESULTS[0] = document.getElementById("goalName").value;
 });
 document.getElementById("goalRange").addEventListener("mousemove", function(){
-    document.getElementById("myGoal").innerHTML = '<span class="badge badge badge-success">'+((document.getElementById("goalRange").value*20) + (Math.floor(document.getElementById("goalRange").value/50)*80*(document.getElementById("goalRange").value-50))) + '</span>';
+  if(mouseDown){
+    document.getElementById("myGoal").value = ((document.getElementById("goalRange").value*20) + (Math.floor(document.getElementById("goalRange").value/50)*80*(document.getElementById("goalRange").value-50)));
+  }
 });
 
 //next button
@@ -191,7 +192,14 @@ function updateProgressBar(){
 
 
 
-
+// To check about the mouse
+var mouseDown = 0;
+document.body.onmousedown = function() {
+  ++mouseDown;
+}
+document.body.onmouseup = function() {
+  --mouseDown;
+}
 
 
 
