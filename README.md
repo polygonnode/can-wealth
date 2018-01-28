@@ -1,7 +1,11 @@
 # can-wealth
 
-
-s
+### Color Scheme
+- dark-blue:  #35495E
+- light-blue: #0594C7
+- red:        #019589
+- green:      #E6362C
+- off-white:  #F2F3F4
 
 ```
 >> sudo apt-get update
