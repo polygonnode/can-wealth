@@ -34,7 +34,7 @@
                 How much would you like to save?
               </div>
               <div id="myal" class="range-display">
-                <span class="badge badge badge-success"><input type="number" id="myGoal" class="blank-input"></span>
+                <span class="badge badge badge-success">$<input type="number" id="myGoal" class="blank-input"></span>
 
               </div>
               <div class="slidecontainer" style="padding:0;" >
@@ -56,26 +56,23 @@
               <div class="question-title">
                 What is your average yearly income?
               </div>
-              <div id="myGoal" class="range-display">
-                <span class="badge badge-pill badge-primary">0</span>
-
+              <div id="myEarnings" class="range-display">
+                <span class="badge badge-pill badge-primary"><input type="number" id="earnings" class="blank-input"></span>
               </div>
 
-              <div class="slidecontainer" style="padding:0;" >
-                <input type="range" min="0" max="100" step="" value="0" class="slider" id="goalRange" >
-              </div>
+
             </div>
             <div class="question-wrapper" id="qFive">
               <div class="question-title">
                 How much do you have saved up so far?
               </div>
-              <div id="myGoal" class="range-display">
-                <span class="badge badge-pill badge-primary">0</span>
+              <div id="myCurrent" class="range-display">
+                <span class="badge badge badge-success"><input type="number" id="currentSaved" class="blank-input"></span>
 
               </div>
 
               <div class="slidecontainer" style="padding:0;" >
-                <input type="range" min="0" max="100" step="" value="0" class="slider" id="goalRange" >
+                <input type="range" min="0" max="100" step="" value="0" class="slider" id="currentRange" >
               </div>
             </div>
             <div class="question-wrapper" id="qSix">
@@ -129,6 +126,15 @@ document.getElementById("goalRange").addEventListener("mousemove", function(){
     document.getElementById("myGoal").value = ((document.getElementById("goalRange").value*20) + (Math.floor(document.getElementById("goalRange").value/50)*80*(document.getElementById("goalRange").value-50)));
   }
 });
+document.getElementById("ageRange").addEventListener("mousemove", function(){
+    document.getElementById("myAge").innerHTML = '<span class="badge badge badge-secondary">'+document.getElementById("ageRange").value + '</span>';
+    //document.getElementById("myGoal").innerHTML = '<span class="badge badge badge-success">'+document.getElementById("goalRange").value + '</span>';
+});
+document.getElementById("currentRange").addEventListener("mousemove", function(){
+  if(mouseDown){
+    document.getElementById("currentSaved").value = Math.floor(document.getElementById("myGoal").value*(document.getElementById("currentRange").value/100)) ;
+  }
+});
 
 //next button
 document.getElementById("next").addEventListener("click", function(){
@@ -157,10 +163,6 @@ document.getElementById("previous").addEventListener("click", function(){
   }
 });
 
-document.getElementById("goalRange").addEventListener("mousemove", function(){
-    document.getElementById("myAge").innerHTML = '<span class="badge badge badge-secondary">'+document.getElementById("ageRange").value + '</span>';
-    //document.getElementById("myGoal").innerHTML = '<span class="badge badge badge-success">'+document.getElementById("goalRange").value + '</span>';
-});
 
 //supporting functions
 function goToPanel(pannelIndex){
