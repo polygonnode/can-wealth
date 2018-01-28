@@ -34,10 +34,10 @@
                 How much would you like to save?
               </div>
               <div id="myGoal" class="range-display">
-                <span class="badge badge-pill badge-primary">0</span>
+                <span class="badge badge badge-success"><input type="text" id="myGoal" class="blank-input"></span>
 
               </div>
-
+                <span class="badge badge-pill badge-primary"><input type="text" class="blank-input"></span>
               <div class="slidecontainer" style="padding:0;" >
                 <input type="range" min="0" max="100" step="" value="0" class="slider" id="goalRange" >
               </div>
@@ -125,6 +125,9 @@ var CURRENT_PANEL = 0;
 document.getElementById("goalName").addEventListener("change", function(){
   SURVEY_RESULTS[0] = document.getElementById("goalName").value;
 });
+document.getElementById("goalRange").addEventListener("mousemove", function(){
+    document.getElementById("myGoal").innerHTML = '<span class="badge badge badge-success">'+((document.getElementById("goalRange").value*20) + (Math.floor(document.getElementById("goalRange").value/50)*80*(document.getElementById("goalRange").value-50))) + '</span>';
+});
 
 //next button
 document.getElementById("next").addEventListener("click", function(){
@@ -155,9 +158,7 @@ document.getElementById("previous").addEventListener("click", function(){
 
 document.getElementById("goalRange").addEventListener("mousemove", function(){
     document.getElementById("myAge").innerHTML = '<span class="badge badge badge-secondary">'+document.getElementById("ageRange").value + '</span>';
-    var goal =  document.getElementById("goalRange").value;
-    if(goal)
-    document.getElementById("myGoal").innerHTML = '<span class="badge badge badge-success">'+document.getElementById("goalRange").value + '</span>';
+    //document.getElementById("myGoal").innerHTML = '<span class="badge badge badge-success">'+document.getElementById("goalRange").value + '</span>';
 });
 
 //supporting functions
@@ -183,7 +184,7 @@ function updateButtonStates(){
 }
 
 function updateProgressBar(){
-  
+
     document.getElementById("progressBar").style.width = (((CURRENT_PANEL + 1)/SURVEY_DIVS.length)*100).toString() + "%";
 
 }

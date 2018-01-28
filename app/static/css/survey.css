@@ -27,6 +27,10 @@
   padding-right:20%;
   padding-left:20%;
 }
+.blank-input{
+  border: none;
+  background:none;
+}
 #myAge{
 
 }
