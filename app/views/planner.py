@@ -11,7 +11,7 @@ def index():
 
 
 @planner.route("/results")
-def index():
+def results():
 
 
     return render_template("planner/results.html")
