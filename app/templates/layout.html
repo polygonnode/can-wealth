@@ -8,12 +8,12 @@
     <link href="{{ url_for('static', filename = 'lib/css/bootstrap.css') }}" rel="stylesheet" type="text/css" />
 
   </head>
-  <body>
+  <body style="background-color:#F2F3F4;min-height:100vh;">
 
     <!-- Header nav bar containing everything across the top of the webpage -->
-    <nav id="top" class="navbar navbar-light bg-faded">
+    <nav id="top" class="navbar navbar-light bg-faded" style="background-color:white;">
       <a class="navbar-brand" href="#">
-        <img src="/static/images/with.svg"  class="nav navbar-nav navbar-left" alt="" style = "height:9.5rem;width:9.5rem;">
+        <img src="/static/images/logo.png"  class="nav navbar-nav navbar-left" alt="">
       </a>
 
         <span class="badge badge-danger">Beta</span>
@@ -24,20 +24,37 @@
         </button>
 
               <!-- Modal that will be triggered when the feedback button is clicked-->
-      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <!-- Form that will process feedback information -->
-            <form>
-              <div class="form-group">
-                <label class = "formLabels">Email address</label>
-                <input type="email" class="form-control" id="emailFormInput" placeholder="name@example.com">
-              </div>
-              <div class="form-group">
-                <label class = "formLabels"> Please input your feedback/suggestions here: </label>
-                <textarea class="form-control" id="suggestionFormInput" rows="3"></textarea>
-              </div>
-              <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
+
+      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Give us some feedback</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
+      <form>
+      <div class="modal-body">
+
+          <div class="form-group">
+            <label class = "formLabels">Email address</label>
+            <input type="email" class="form-control" id="emailFormInput" placeholder="name@example.com">
+          </div>
+          <div class="form-group">
+            <label class = "formLabels"> Please input your feedback/suggestions here: </label>
+            <textarea class="form-control" id="suggestionFormInput" rows="3"></textarea>
+          </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary">Submit</button>
+
+        </div>
+        </form>
+    </div>
+  </div>
+</div>
     </nav>
 
 
@@ -46,9 +63,15 @@
   {% block body %}
   {% endblock %}
 
-    <footer class="footerContainer">
-        <p class="float-right"><a href="top">Back to top</a></p>
-        <p>© 2016 Canadian Wealth Inc. MNKY Studio, All rights reserved. · <a href="#">Privacy</a> · <a href="#">Terms</a></p>
+    <footer class="footer text-white text-left" style="padding:1rem;background-color:#0594C7;position: fixed;bottom: 0;width:100%;">
+      <!--<div class="container">
+        <div style="border-bottom:2px solid white;margin-bottom:1rem;">
+
+
+        </div>
+      </div>-->
+
+       © 2018 Canadian Wealth Inc. MNKY Studio, All rights reserved. · <a href="#">Privacy</a> · <a href="#">Terms</a>
       </footer>
 
       <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
