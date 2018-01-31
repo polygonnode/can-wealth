@@ -15,7 +15,10 @@
    version="1.1"
    id="svg8"
    inkscape:version="0.92.2 (5c3e80d, 2017-08-06)"
-   sodipodi:docname="logo_text_right.svg">
+   sodipodi:docname="logo_text_right.svg"
+   inkscape:export-filename="C:\GitHub\can-wealth\app\static\images\logo_text_right.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96">
   <defs
      id="defs2" />
   <sodipodi:namedview
@@ -25,9 +28,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.4"
-     inkscape:cx="994.46709"
-     inkscape:cy="88.817788"
+     inkscape:zoom="1.979899"
+     inkscape:cx="586.73903"
+     inkscape:cy="125.14807"
      inkscape:document-units="mm"
      inkscape:current-layer="g168"
      showgrid="true"
@@ -65,11 +68,14 @@
       <text
          id="text156"
          class="st0 st1 st2"
-         style="font-size:205.19595337px;font-family:f-0-0;fill:#35495e;stroke-width:1.52664781"
-         x="497.03595"
-         y="728.7384">
+         style="font-size:173.80426025px;font-family:f-0-0;fill:#35495e;stroke-width:1.6895169"
+         x="554.41852"
+         y="635.83881"
+         transform="scale(0.90360006,1.1066843)"
+         inkscape:export-xdpi="96"
+         inkscape:export-ydpi="96">
         <tspan
-           style="line-height:0.25;letter-spacing:-15.08000019px;-inkscape-font-specification:'f-0-0 Bold';font-family:f-0-0;font-weight:bold;font-style:normal;font-stretch:normal;font-variant:normal"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:11.30000019;font-family:f-0-0;-inkscape-font-specification:'f-0-0 Bold';letter-spacing:-9.52877808px;stroke-width:1.6895169"
            id="tspan187">CANWealth</tspan>
       </text>
       <path
