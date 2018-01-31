@@ -23,3 +23,16 @@ class Survey(db.Model):
 
     def __repr__(self):
             return "< Surevy "+ str(self.id) + " >"
+
+
+class Feedback(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String(150), nullable=False)
+    body = db.Column(db.Text)
+
+    def __init__(self,email,body):
+        self.email = email
+        self.body = body
+
+    def __repr__(self):
+        return "< Feedback "+ str(self.id) + " >"

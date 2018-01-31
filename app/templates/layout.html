@@ -39,16 +39,16 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form>
+      <form action="/feedback" method="POST">
       <div class="modal-body">
 
           <div class="form-group">
             <label class = "formLabels">Email address</label>
-            <input type="email" class="form-control" id="emailFormInput" placeholder="name@example.com">
+            <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com">
           </div>
           <div class="form-group">
             <label class = "formLabels"> Please input your feedback/suggestions here: </label>
-            <textarea class="form-control" id="suggestionFormInput" rows="3"></textarea>
+            <textarea class="form-control" id="body" name="body" rows="3"></textarea>
           </div>
 
       </div>
