@@ -1,9 +1,6 @@
 from flask import request, g, Blueprint, render_template, url_for
 from app.views.forms.planner_forms import Survey_Form
-<<<<<<< HEAD
 from app.models import Sur
-=======
->>>>>>> 9f262148955408f413a9863651e67dd9ba5f4ac9
 planner = Blueprint('planner', __name__)
 
 
