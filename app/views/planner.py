@@ -19,8 +19,15 @@ def index():
 @planner.route("/results")
 def results():
 
+    survey_id = request.args.get('id')
+    if False:
+        #find the surevey and run the financeCalculations
 
-    return render_template("planner/results.html")
+        
+        render_template("planner/results.html")
+
+
+    return redirect(url_for('planner.index'))
 
 
 
