@@ -9,10 +9,8 @@
 
 
 
-
 <!-- All the java script that handles the svg element---->
 <script>
-
 var svg = d3.select("svg"),
     margin = {top: 20, right: 20, bottom: 30, left: 40},
     width = +svg.attr("width") - margin.left - margin.right,
@@ -26,7 +24,7 @@ var g = svg.append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 var data = [
   {% for month in months %}
-  {date: {{}}, moneyTowardsGoal: 16020, moneyTowardsGoalPusInterest: 16020+25},
+  {date: {{month.date}}, moneyTowardsGoal: {{month.in_account}}, moneyTowardsGoalPusInterest: {{month.our_contribution}}},
 ];
   {%endfor%}
 
