@@ -1,4 +1,4 @@
-from flask import request, g, Blueprint, render_template, url_for, redirect
+from flask import request, g, Blueprint, render_template, url_for
 from app.views.forms.planner_forms import Survey_Form
 planner = Blueprint('planner', __name__)
 
@@ -11,7 +11,7 @@ def index():
     if request.method == "POST":
         print(form.data)
         print("survey was posted too reidecting you to result")
-        return redirect(url_for('planner.results',id=1234))
+        return url_for('planer.result',id=1234)
     #just return the home page
     return render_template("planner/survey.html",form=form)
 
@@ -19,6 +19,7 @@ def index():
 
 @planner.route("/results")
 def results():
+<<<<<<< HEAD
     survey_id = request.args.get('id')
     if False:
         #find the surevey and run the financeCalculations
@@ -29,6 +30,8 @@ def results():
         test_monthly_payment = 2500
         render_template("planner/results.html")
 
+=======
+>>>>>>> 330a169c477700d07051004b098a4b853d0a2173
 
 
     return redirect(url_for('planner.index'))

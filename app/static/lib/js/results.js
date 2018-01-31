@@ -1,15 +1,3 @@
-{% extends "layout.html" %}
-{% block title %} Results {% endblock %}
-{% block body %}
-<!DOCTYPE html>
-<script src="https://d3js.org/d3.v4.min.js"></script>
-<link href="{{ url_for('static', filename = 'css/results.css') }}" rel="stylesheet" type="text/css" />
-RESULTS WHY THE FUCK WONT U WORK
-    <svg width="960" height="300"></svg>
-
-
-<script>
-
 var svg = d3.select("svg"),
     margin = {top: 20, right: 20, bottom: 30, left: 40},
     width = +svg.attr("width") - margin.left - margin.right,
@@ -77,7 +65,3 @@ var test_monthly_payment = 1000;
       .attr("y", function(d) { return y(d.moneyTowardsGoal); })
       .attr("width", x.bandwidth())
       .attr("height", function(d) { return height - y(d.moneyTowardsGoal); });
-
-</script>
-
-{% endblock %}
