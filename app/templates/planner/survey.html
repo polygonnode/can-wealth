@@ -97,14 +97,14 @@
             </div>
             <div class="col-sm-4 text-center">
               <img class="forward-arrow mx-auto" id="next" src="{{ url_for('static', filename = 'images/play-button.svg') }}">
-              <form action="/survey" method="POST">
+              <form action="/survey" method="POST" id="surveyForm">
                 {{ form.title() }}
                 {{ form.goal() }}
                 {{ form.age() }}
                 {{ form.income() }}
                 {{ form.down_payment() }}
                 {{ form.monthly_payment() }}
-                <a class="btn btn-success-primary" href="#" role="button">Link</a>
+                <a class="btn btn-outline-success" href="#" id="formSubmit" role="button">Create Plan</a>
               </form>
             </div>
           </div>
@@ -190,8 +190,25 @@ document.getElementById("previous").addEventListener("click", function(){
 
   }
 });
+document.getElementById("formSubmit").addEventListener("click", function(){
+    submitSurvey();
+});
+
+function submitSurvey(){
+  //get all the values from the feilds
+  document.getElementById("title").value = document.getElementById("goalName").value;
+  document.getElementById("goal").value = document.getElementById("myGoal").value;
+  document.getElementById("age").value = document.getElementById("myAge").value;
+  document.getElementById("income").value = document.getElementById("myEarning").value;
+  document.getElementById("down_payment").value = document.getElementById("currentSaved").value;
+  document.getElementById("monthly_payment").value = document.getElementById("myContribution").value;
 
 
+  //submit the form
+  document.getElementById("surveyForm").submit();
+
+
+}
 //supporting functions
 function goToPanel(pannelIndex){
   //set the current div to hidden
@@ -204,8 +221,10 @@ function goToPanel(pannelIndex){
 function updateButtonStates(){
   if(CURRENT_PANEL == (SURVEY_DIVS.length-1)){// hide the next
     document.getElementById("next").style.display = "none";
+    document.getElementById("formSubmit").style.display = "block";
   }else{//show the next
     document.getElementById("next").style.display = "block";
+    document.getElementById("formSubmit").style.display = "none";
   }
   if(CURRENT_PANEL == 0){// hide the next
     document.getElementById("previous").style.display = "none";

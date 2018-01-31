@@ -83,6 +83,10 @@
   margin-top:1rem;
   margin-bottom:1rem;
 }
+#formSubmit{
+  display:none;
+  margin-top:1rem;
+}
 .survey-input-wapper{
   padding:1rem;
 }
