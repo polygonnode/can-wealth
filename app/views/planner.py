@@ -17,7 +17,6 @@ def index():
         survey = Survey(request.form["title"],goal,age,income,down_payment,monthly_payment)
         db.session.add(survey)
         db.session.commit()
-        print("survey was posted too reidecting you to result")
         return redirect(url_for('planner.results',id=survey.id))
     #just return the home page
     return render_template("planner/survey.html",form=form)
@@ -28,11 +27,15 @@ def index():
 def results():
 
     survey_id = request.args.get('id')
-    if False:
+
+    if survey_id:
+        survey = Survey.query.filter_by(id=int(survey_id)).first()
+
+        if survey:
+            months = financeCalculations(survey.goal,survey.down_payment,survey.monthly_payment)
+            return render_template("planner/results.html",months=months,survey=survey)
+
         #find the surevey and run the financeCalculations
-        render_template("planner/results.html")
-
-
     return redirect(url_for('planner.index'))
 
 
@@ -52,21 +55,11 @@ def financeCalculations(goal, down, monthly):
       remainder = remainder - (account_change - in_account)
       in_account = account_change
       period = period + 1
-      print("=========")
-      print(in_account)
-      print(our_contribution)
       return_list.append([period,in_account,our_contribution])
-      print(return_list)
     # now the remainder
     if(remainder > 0):
       period += 1
       in_account = in_account + remainder
       remainder = 0
-
-    print(in_account)
-    print(period)
-    print((our_contribution/in_account)*period)
-
-
 
     return(return_list)

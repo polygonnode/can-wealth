@@ -8,7 +8,6 @@
     <svg width="960" height="300"></svg>
 
 
-
 <!-- All the java script that handles the svg element---->
 <script>
 var svg = d3.select("svg"),
@@ -25,15 +24,15 @@ var g = svg.append("g")
 var data = [
   {% for month in months %}
   {date: {{month.date}}, moneyTowardsGoal: {{month.in_account}}, moneyTowardsGoalPusInterest: {{month.our_contribution}}},
-];
   {%endfor%}
+];
 
 var test_goal = 50000;
 var test_down_payment = 15000;
 var test_monthly_payment = 1000;
 
-  x.domain(data.map(function(d) { return d.date; }));
-  y.domain([0, test_goal]);
+  x.domain(data.map(function(d) { return {{months.length}}; }));
+  y.domain([0, {{survey.goal}}]);
 
   g.append("g")
       .attr("class", "axis axis--x")
@@ -54,20 +53,20 @@ var test_monthly_payment = 1000;
     .data(data)
     .enter().append("rect")
       .attr("class", "bar")
-      .attr("x", function(d) { return x(d.date);})
-      .attr("y", function(d) { return y(d.moneyTowardsGoalPusInterest); })
+      .attr("x", function(d) { return x({{len(months)}});})
+      .attr("y", function(d) { return y({{survey.our_contribution}}; })
       .attr("width", x.bandwidth())
-      .attr("height", function(d) { return height - y(d.moneyTowardsGoalPusInterest); });
+      .attr("height", function(d) { return height - y({{survey.our_contribution}}); });
 
 
   g.selectAll(".bar1")
     .data(data)
     .enter().append("rect")
       .attr("class", "bar1")
-      .attr("x", function(d) { return x(d.date); })
-      .attr("y", function(d) { return y(d.moneyTowardsGoal); })
+      .attr("x", function(d) { return x({{len(months)}}); })
+      .attr("y", function(d) { return y({{survey.monthly_payment}}); })
       .attr("width", x.bandwidth())
-      .attr("height", function(d) { return height - y(d.moneyTowardsGoal); });
+      .attr("height", function(d) { return height - y({{survey.monthly_payment}}); });
 
 </script>
 
