@@ -16,12 +16,16 @@
         <img src="/static/images/logo_text_right.png" class="nav navbar-nav navbar-left" style="height:3rem;" alt="">
       </a>
 
-        <span class="badge badge-danger">Beta</span>
+
 
         <!-- Button that will trigger the modal to then bring up the form to input suggestions -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-          Feedback/Suggestions?
-        </button>
+        <div >
+
+          <a href="#" class="nav-link"  style="display:inline-block;"data-toggle="modal" data-target="#myModal">Feedback</a>
+          <div class="align-middle" style="display:inline-block;height:1.75rem;">
+            <span class="badge badge-danger " style="font-size:1rem;display:inline-block;" data-toggle="tooltip" data-placement="bottom" title="This is our beta platform, give it a try and tell us what you think!">Beta</span>
+          <div>
+        </div>
 
               <!-- Modal that will be triggered when the feedback button is clicked-->
 
@@ -77,5 +81,11 @@
       <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-</body>
+      <script>
+
+      $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+</script>
+  </body>
 </html>

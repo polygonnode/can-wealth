@@ -99,7 +99,12 @@
               <img class="forward-arrow mx-auto" id="next" src="{{ url_for('static', filename = 'images/play-button.svg') }}">
               <form action="/survey" method="POST">
                 {{ form.title() }}
-
+                {{ form.goal() }}
+                {{ form.age() }}
+                {{ form.income() }}
+                {{ form.down_payment() }}
+                {{ form.monthly_payment() }}
+                <a class="btn btn-success-primary" href="#" role="button">Link</a>
               </form>
             </div>
           </div>
