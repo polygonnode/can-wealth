@@ -10,10 +10,4 @@ class Survey_Form(FlaskForm):
     down_payment = HiddenField()
     monthly_payment = HiddenField()
 
-    def __init__(self,title, goal, age,income,down_payment,monthly_payment):
-        self.title = title
-        self.goal = goal
-        self.age = age
-        self.income = income
-        self.down_payment = down_payment
-        self.monthly_payment = monthly_payment
+    

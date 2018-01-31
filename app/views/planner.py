@@ -5,12 +5,13 @@ planner = Blueprint('planner', __name__)
 
 @planner.route("/survey", methods=["GET","POST"])
 def index():
-    #form = Survey_Form(request.form)
+    form = Survey_Form(request.form)
     error = None
     if request.method == "POST":
+        print("survey was posted too reidecting you to result")
         return url_for('planer.result',id=1234)
     #just return the home page
-    return render_template("planner/survey.html")
+    return render_template("planner/survey.html",form=form)
 
 
 

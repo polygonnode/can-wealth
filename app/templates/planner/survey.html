@@ -97,6 +97,10 @@
             </div>
             <div class="col-sm-4 text-center">
               <img class="forward-arrow mx-auto" id="next" src="{{ url_for('static', filename = 'images/play-button.svg') }}">
+              <form action="/survey" method="POST">
+                {{ form.title() }}
+
+              </form>
             </div>
           </div>
 
