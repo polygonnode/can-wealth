@@ -1,4 +1,4 @@
-from flask import request, g, Blueprint, render_template, url_for, redirect
+from flask import request, g, Blueprint, render_template, url_for
 from app.views.forms.planner_forms import Survey_Form
 planner = Blueprint('planner', __name__)
 
@@ -9,7 +9,7 @@ def index():
     error = None
     if request.method == "POST":
         print("survey was posted too reidecting you to result")
-        return redirect(url_for('planner.results',id=1234))
+        return url_for('planer.result',id=1234)
     #just return the home page
     return render_template("planner/survey.html",form=form)
 
@@ -17,11 +17,6 @@ def index():
 
 @planner.route("/results")
 def results():
-    title = "Test Plan"
-    test_goal = 30000
-    test_down_payment = 7000
-    test_monthly_payment = 2500
-
 
 
     return render_template("planner/results.html")
