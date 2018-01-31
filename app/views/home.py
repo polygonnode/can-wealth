@@ -1,4 +1,4 @@
-from flask import request, g, Blueprint, render_template
+from flask import request, g, Blueprint, render_template, url_for, redirect
 
 home = Blueprint('home', __name__)
 
@@ -6,4 +6,4 @@ home = Blueprint('home', __name__)
 @home.route("/")
 def index():
     #just return the home page
-    return render_template("home/index.html")
+    return redirect(url_for('planner.index'))

@@ -7,7 +7,9 @@ planner = Blueprint('planner', __name__)
 def index():
     form = Survey_Form(request.form)
     error = None
+
     if request.method == "POST":
+        print(form.data)
         print("survey was posted too reidecting you to result")
         return redirect(url_for('planner.results',id=1234))
     #just return the home page
@@ -17,14 +19,19 @@ def index():
 
 @planner.route("/results")
 def results():
-    title = "Test Plan"
-    test_goal = 30000
-    test_down_payment = 7000
-    test_monthly_payment = 2500
+    survey_id = request.args.get('id')
+    if False:
+        #find the surevey and run the financeCalculations
+
+        title = "Test Plan"
+        test_goal = 30000
+        test_down_payment = 7000
+        test_monthly_payment = 2500
+        render_template("planner/results.html")
 
 
 
-    return render_template("planner/results.html")
+    return redirect(url_for('planner.index'))
 
 
 
