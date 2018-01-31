@@ -1,6 +1,6 @@
-from flask import request, g, Blueprint, render_template, url_for
+from flask import request, g, Blueprint, render_template, url_for, redirect
 from app.views.forms.planner_forms import Survey_Form
-from app.models import Sur
+from app.models import Survey, db
 planner = Blueprint('planner', __name__)
 
 
@@ -9,8 +9,16 @@ def index():
     form = Survey_Form(request.form)
     error = None
     if request.method == "POST":
+        goal = int(request.form["goal"].replace(",", ""))
+        age = int(request.form["age"].replace(",", ""))
+        income = int(request.form["income"].replace(",", ""))
+        down_payment = int(request.form["down_payment"].replace(",", ""))
+        monthly_payment = int(request.form["monthly_payment"].replace(",", ""))
+        survey = Survey(request.form["title"],goal,age,income,down_payment,monthly_payment)
+        db.session.add(survey)
+        db.session.commit()
         print("survey was posted too reidecting you to result")
-        return url_for('planner.results',id=1234)
+        return redirect(url_for('planner.results',id=survey.id))
     #just return the home page
     return render_template("planner/survey.html",form=form)
 
@@ -22,8 +30,6 @@ def results():
     survey_id = request.args.get('id')
     if False:
         #find the surevey and run the financeCalculations
-
-        
         render_template("planner/results.html")
 
 
