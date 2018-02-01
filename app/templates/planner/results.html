@@ -27,9 +27,6 @@ var data = [
   {%endfor%}
 ];
 
-var test_goal = 50000;
-var test_down_payment = 15000;
-var test_monthly_payment = 1000;
 
   x.domain(data.map(function(d) { return {{months.length}}; }));
   y.domain([0, {{survey.goal}}]);
@@ -53,7 +50,7 @@ var test_monthly_payment = 1000;
     .data(data)
     .enter().append("rect")
       .attr("class", "bar")
-      .attr("x", function(d) { return x({{len(months)}});})
+      .attr("x", function(d) { return x({{months.length}});})
       .attr("y", function(d) { return y({{survey.our_contribution}}; })
       .attr("width", x.bandwidth())
       .attr("height", function(d) { return height - y({{survey.our_contribution}}); });
@@ -63,7 +60,7 @@ var test_monthly_payment = 1000;
     .data(data)
     .enter().append("rect")
       .attr("class", "bar1")
-      .attr("x", function(d) { return x({{len(months)}}); })
+      .attr("x", function(d) { return x({{months.length}}); })
       .attr("y", function(d) { return y({{survey.monthly_payment}}); })
       .attr("width", x.bandwidth())
       .attr("height", function(d) { return height - y({{survey.monthly_payment}}); });

@@ -22,7 +22,7 @@ class Survey(db.Model):
 
 
     def __repr__(self):
-            return "< Surevy "+ str(self.id) + " >"
+            return "< Survey "+ str(self.id) + " >"
 
 
 class Feedback(db.Model):
