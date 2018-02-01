@@ -17,6 +17,9 @@
 }
 
 svg {
+  position: absolute;
+  top: 120px;
+  left:20px;
   display: block;
   margin: auto;
 }

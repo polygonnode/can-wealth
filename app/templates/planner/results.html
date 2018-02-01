@@ -15,7 +15,7 @@ var svg = d3.select("svg"),
     height = +svg.attr("height") - margin.top - margin.bottom;
 
 //change the rangeRound to width if u want it to expand
-var x = d3.scaleBand().rangeRound([0, 500]).padding(0.1),
+var x = d3.scaleBand().rangeRound([0, 1000]).padding(0.1),
     y = d3.scaleLinear().rangeRound([height, 0]);
 
 var g = svg.append("g")
