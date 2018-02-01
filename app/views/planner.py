@@ -55,11 +55,11 @@ def financeCalculations(goal, down, monthly):
       remainder = remainder - (account_change - in_account)
       in_account = account_change
       period = period + 1
-      return_list.append([period,in_account,our_contribution])
+      moneyTowardsGoalPusInterest = in_account + our_contribution
+      return_list.append([period,in_account,moneyTowardsGoalPusInterest])
     # now the remainder
     if(remainder > 0):
       period += 1
       in_account = in_account + remainder
       remainder = 0
-
     return(return_list)
