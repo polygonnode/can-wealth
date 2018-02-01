@@ -21,6 +21,7 @@ var x = d3.scaleBand().rangeRound([0, 500]).padding(0.1),
 var g = svg.append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 var data = [
+
   {% for month in months %}
   {date: {{month.period}}, moneyTowardsGoal: {{month.in_account}}, moneyTowardsGoalPusInterest: {{month.moneyTowardsGoalPusInterest}}},
   {%endfor%}
