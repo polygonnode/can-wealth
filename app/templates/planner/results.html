@@ -28,7 +28,7 @@ var data = [
 ];
 
 
-  x.domain(data.map(function(d) { return {{months|length}}; }));
+  x.domain(data.map(function(d) { return d.date; }));
   y.domain([0, {{survey.goal}}]);
 
   g.append("g")
@@ -50,20 +50,20 @@ var data = [
     .data(data)
     .enter().append("rect")
       .attr("class", "bar")
-      .attr("x", function(d) { return x({{months|length}});})
-      .attr("y", function(d) { return y({{survey.down_payment}}); })
+      .attr("x", function(d) { return x(d.date);})
+      .attr("y", function(d) { return y(d.moneyTowardsGoalPusInterest); })
       .attr("width", x.bandwidth())
-      .attr("height", function(d) { return height - y({{survey.down_payment}}); });
+      .attr("height", function(d) { return height - y(d.moneyTowardsGoalPusInterest); });
 
 
   g.selectAll(".bar1")
     .data(data)
     .enter().append("rect")
       .attr("class", "bar1")
-      .attr("x", function(d) { return x({{months|length}}); })
-      .attr("y", function(d) { return y({{survey.monthly_payment}}); })
+      .attr("x", function(d) { return x(d.date); })
+      .attr("y", function(d) { return y(d.moneyTowardsGoal); })
       .attr("width", x.bandwidth())
-      .attr("height", function(d) { return height - y({{survey.monthly_payment}}); });
+      .attr("height", function(d) { return height - y(d.moneyTowardsGoal); });
 
 </script>
 
