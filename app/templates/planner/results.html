@@ -51,7 +51,7 @@ var data = [
     .enter().append("rect")
       .attr("class", "bar")
       .attr("x", function(d) { return x({{months|length}});})
-      .attr("y", function(d) { return y({{survey.down_payment}}; })
+      .attr("y", function(d) { return y({{survey.down_payment}}); })
       .attr("width", x.bandwidth())
       .attr("height", function(d) { return height - y({{survey.down_payment}}); });
 
