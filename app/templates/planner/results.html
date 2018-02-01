@@ -23,7 +23,7 @@ var g = svg.append("g")
 var data = [
 
   {% for month in months %}
-  {date: {{month.period}}, moneyTowardsGoal: {{month.in_account}}, moneyTowardsGoalPusInterest: {{month.moneyTowardsGoalPusInterest}}},
+  {date: {{month[0]}}, moneyTowardsGoal: {{month[1]}}, moneyTowardsGoalPusInterest: {{month[2]}}},
   {%endfor%}
 ];
 
@@ -51,9 +51,9 @@ var data = [
     .enter().append("rect")
       .attr("class", "bar")
       .attr("x", function(d) { return x({{months|length}});})
-      .attr("y", function(d) { return y({{survey.our_contribution}}; })
+      .attr("y", function(d) { return y({{survey.down_payment}}; })
       .attr("width", x.bandwidth())
-      .attr("height", function(d) { return height - y({{survey.our_contribution}}); });
+      .attr("height", function(d) { return height - y({{survey.down_payment}}); });
 
 
   g.selectAll(".bar1")
