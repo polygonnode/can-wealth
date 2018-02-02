@@ -33,7 +33,6 @@ def results():
 
         if survey:
             months = financeCalculations(survey.goal,survey.down_payment,survey.monthly_payment)
-            print(months[12])
             return render_template("planner/results.html",months=months,survey=survey)
 
         #find the surevey and run the financeCalculations
