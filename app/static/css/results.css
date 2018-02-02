@@ -16,11 +16,6 @@
   display: none;
 }
 
-svg {
-  position: absolute;
-  top: 150px;
-  left:20px;
-}
 .makeitscroll {
-  width:100%;
+  width:5000px;
 }
