@@ -55,6 +55,15 @@ def financeCalculations(goal, down, monthly):
       remainder = remainder - (account_change - in_account)
       in_account = account_change
       period = period + 1
+      year = period / 12
+      month = period % 12
+      print(year)
+      print(month)
+      month_list = ['January', 'Feburary', 'March', 'April', 'May', 'June', 'July',
+              'August', 'September', 'October', 'November', 'December']
+
+      #period = month_list[month]
+
       moneyTowardsGoalPusInterest = in_account + our_contribution
       return_list.append([period,in_account,moneyTowardsGoalPusInterest])
     # now the remainder

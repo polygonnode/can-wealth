@@ -5,6 +5,7 @@
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <link href="{{ url_for('static', filename = 'css/results.css') }}" rel="stylesheet" type="text/css" />
 
+<h1>You are saving for: {{survey.title}}</h1>
     <svg width="960" height="300"></svg>
 
 <!-- All the java script that handles the svg element---->
@@ -20,8 +21,8 @@ var x = d3.scaleBand().rangeRound([0, 1000]).padding(0.1),
 
 var g = svg.append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-var data = [
 
+var data = [
   {% for month in months %}
   {date: {{month[0]}}, moneyTowardsGoal: {{month[1]}}, moneyTowardsGoalPusInterest: {{month[2]}}},
   {%endfor%}
@@ -38,8 +39,8 @@ var data = [
 
   g.append("g")
       .attr("class", "axis axis--y")
-      .call(d3.axisLeft(y).ticks(10))
-    .append("text")
+      .call(d3.axisLeft(y).ticks(10).tickFormat(d3.format("s")))
+      .append("text")
       .attr("transform", "rotate(-90)")
       .attr("y", 6)
       .attr("dy", "0.71em")
