@@ -43,7 +43,7 @@ def results():
 
 #supportying functions
 def financeCalculations(goal, down, monthly):
-    their_contribution = 0
+    their_contribution = down
     remainder = goal - down
     in_account = down
     period = 1
@@ -52,7 +52,7 @@ def financeCalculations(goal, down, monthly):
     our_contribution = intrest
     account_change = intrest
     remainder = remainder - (intrest)
-    in_account = intrest
+    in_account = down + intrest
     while(remainder >= monthly): # calculate end of every monthly
       #end of month
       in_account = in_account + (monthly -5)

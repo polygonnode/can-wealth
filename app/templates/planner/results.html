@@ -26,32 +26,63 @@
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <link href="{{ url_for('static', filename = 'css/results.css') }}" rel="stylesheet" type="text/css" />
 <div class="container" style="padding-top:1rem;">
-  <h3>My saving plan for a  {{survey.title}}</h3>
+  <h3>My saving plan for a  {{survey.title}} :</h3>
+  <br>
+  <h5>With CANWealth you can reach your goal  {{ saved|int }} month(s) quicker! Now you can reach your goal in {{ months_total|int }} months.</h5>
+  <br>
 
-  <div class="row gray">
+  <div class="row ">
     <div class="col-sm-6">
-      <h5>With CANWealth you can reach your goal  {{ saved|int }} month(s) quicker! Now you can reach your goal in {{ months_total|int }} months.</h5>
+
       <h5 class="text-muted">Total: {{"$%.2f"|format(survey.goal)}}</h5>
       <h5 class="text-muted">Down : {{"$%.2f"|format(survey.down_payment)}}</h5>
       <h5 class="text-muted">Monthly: {{"$%.2f"|format(survey.monthly_payment)}}</h5>
     </div>
     <div class="col-sm-6 text-right">
-      <h5> </h5>
+
       <h5 class="text-muted">Our contribution to your goal:</h5>
       <h5 class="text-muted"> {{"$%.2f"|format(survey.goal - months[-1][1])}}</h5>
-      <h5 class="text-muted"></h5>
+
     </div>
 
 
   </div>
-
+<br>
+<br>
   <div class="container-fluid" style="overflow-x: scroll;">
 
     <svg width="3000" height="300"></svg>
   </div>
-  {% for month in months %}
-  <p>{{ month[0]}} {{ month[1]}} {{ month[2]}}</p>
-  {% endfor %}
+  <br>
+  <br>
+  <br>
+  <h5>Plan Calculations</h5>
+  <table class="table table-sm table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Month</th>
+      <th scope="col">Month Contribution</th>
+      <th scope="col">Intrest</th>
+      <th scope="col">Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for month in months %}
+
+    <tr>
+      <th scope="row">{{ month[0]}}</th>
+      <td>{{"$%.2f"|format(survey.monthly_payment -5)}}</td>
+      <td>{{"$%.2f"|format(month[2] - month[1])}}</td>
+      <td>{{"$%.2f"|format(month[2])}}</td>
+    </tr>
+    {% endfor %}
+
+  </tbody>
+</table>
+<br>
+<br>
+<br>
+
 </div>
 <!-- All the java script that handles the svg element---->
 <script>
