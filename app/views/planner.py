@@ -33,6 +33,7 @@ def results():
 
         if survey:
             months = financeCalculations(survey.goal,survey.down_payment,survey.monthly_payment)
+            print(months[12])
             return render_template("planner/results.html",months=months,survey=survey)
 
         #find the surevey and run the financeCalculations
@@ -57,15 +58,15 @@ def financeCalculations(goal, down, monthly):
       period = period + 1
 
 
-      year = period / 12
-      month = period % 12
+#      year = period / 12
+      month = (period % 12) - 1
       month_list = ['January', 'Feburary', 'March', 'April', 'May', 'June', 'July',
               'August', 'September', 'October', 'November', 'December']
 
-      #period = month_list[month]
+      month_actual_name = month_list[month]
 
       moneyTowardsGoalPusInterest = in_account + our_contribution
-      return_list.append([period,in_account,moneyTowardsGoalPusInterest])
+      return_list.append([period,in_account,moneyTowardsGoalPusInterest,month_actual_name])
     # now the remainder
     if(remainder > 0):
       period += 1
