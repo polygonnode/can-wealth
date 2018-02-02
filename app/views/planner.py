@@ -33,7 +33,7 @@ def results():
 
         if survey:
             months = financeCalculations(survey.goal,survey.down_payment,survey.monthly_payment)
-            return render_template("planner/results.html",months=months,survey=survey)
+            return render_template("planner/results.html",months=months[0],survey=survey,months_total=len(months[0]),saved=months[1])
 
         #find the surevey and run the financeCalculations
     return redirect(url_for('planner.index'))
@@ -43,18 +43,23 @@ def results():
 
 #supportying functions
 def financeCalculations(goal, down, monthly):
+    their_contribution = monthly
     remainder = goal - down
     in_account = down
-    period = 0
+    period = 1
     our_contribution = 0
     return_list = []
+    our_contribution = our_contribution + (in_account * 0.0017)
+    account_change = (in_account * 1.0017)
+    remainder = remainder - (account_change - in_account)
+    in_account = account_change
     while(remainder >= monthly): # calculate end of every monthly
       #end of month
       our_contribution = our_contribution + (in_account * 0.0017)
       account_change = (in_account * 1.0017)  + (monthly -5)
       remainder = remainder - (account_change - in_account)
       in_account = account_change
-      period = period + 1
+
 
 
 #      year = period / 12
@@ -65,10 +70,12 @@ def financeCalculations(goal, down, monthly):
       month_actual_name = month_list[month]
 
       moneyTowardsGoalPusInterest = in_account + our_contribution
+
       return_list.append([period,in_account,moneyTowardsGoalPusInterest,month_actual_name])
+      their_contribution = their_contribution + monthly
+      period = period + 1
     # now the remainder
     if(remainder > 0):
-      period += 1
+
       in_account = in_account + remainder
-      remainder = 0
-    return(return_list)
+    return return_list, ((our_contribution/goal)*period)

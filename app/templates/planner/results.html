@@ -1,12 +1,51 @@
 {% extends "layout.html" %}
 {% block title %} Results {% endblock %}
 {% block body %}
-<!DOCTYPE html>
+<style>
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 4px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+</style>
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <link href="{{ url_for('static', filename = 'css/results.css') }}" rel="stylesheet" type="text/css" />
-<div class="container-fluid" style="overflow-x: scroll;">
-<h1>You are saving for: {{survey.title}}</h1>
+<div class="container" style="padding-top:1rem;">
+  <h3>Plan For {{survey.title}}</h3>
+
+  <div class="row gray">
+    <div class="col-sm-6">
+      <h5>With CANWealth you can reach your goal  {{ saved|int }} month(s) quicker without even lifting a finger in {{ months_total|int }} months.</h5>
+      <h5 class="text-muted">Total: {{"$%.2f"|format(survey.goal)}}</h5>
+      <h5 class="text-muted">Down : {{"$%.2f"|format(survey.down_payment)}}</h5>
+      <h5 class="text-muted">Monthly: {{"$%.2f"|format(survey.monthly_payment)}}</h5>
+    </div>
+
+
+  </div>
+
+  <div class="container-fluid" style="overflow-x: scroll;">
+
     <svg width="3000" height="300"></svg>
+  </div>
+  {% for month in months %}
+  <p>{{ month[0]}} {{ month[1]}} {{ month[2]}}</p>
+  {% endfor %}
 </div>
 <!-- All the java script that handles the svg element---->
 <script>
@@ -24,7 +63,7 @@ var g = svg.append("g")
 
 var data = [
   {% for month in months %}
-  {date: {{ month[0]}}, moneyTowardsGoal: {{month[1]}}, moneyTowardsGoalPusInterest: {{month[2]}}},
+  {date: {{ month[0]}}, moneyTowardsGoal: {{month[1] - (month[2] - month[1]) }}, moneyTowardsGoalPusInterest: {{month[2]}}},
   {%endfor%}
 ];
 
