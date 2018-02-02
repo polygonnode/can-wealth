@@ -1,9 +1,9 @@
 .bar {
-  fill: steelblue;
+  fill: gray;
     opacity: 1;
 }
 .bar1 {
-  fill: gray;
+  fill: steelblue;
     opacity: 0.5;
 
 }
