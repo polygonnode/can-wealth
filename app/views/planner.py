@@ -43,39 +43,33 @@ def results():
 
 #supportying functions
 def financeCalculations(goal, down, monthly):
-    their_contribution = monthly
+    their_contribution = 0
     remainder = goal - down
     in_account = down
     period = 1
-    our_contribution = 0
     return_list = []
-    our_contribution = our_contribution + (in_account * 0.0017)
-    account_change = (in_account * 1.0017)
-    remainder = remainder - (account_change - in_account)
-    in_account = account_change
+    intrest = (in_account * 0.00166666667)
+    our_contribution = intrest
+    account_change = intrest
+    remainder = remainder - (intrest)
+    in_account = intrest
     while(remainder >= monthly): # calculate end of every monthly
       #end of month
-      our_contribution = our_contribution + (in_account * 0.0017)
-      account_change = (in_account * 1.0017)  + (monthly -5)
-      remainder = remainder - (account_change - in_account)
-      in_account = account_change
+      in_account = in_account + (monthly -5)
+      their_contribution += (monthly-5)
+      intrest = (in_account * 0.00166666667)
+      in_account += intrest
+      our_contribution = our_contribution + intrest  # for our tracking
+      remainder = goal - in_account
 
+      return_list.append([period,their_contribution,in_account,""])
 
-
-#      year = period / 12
-      month = (period % 12) - 1
-      month_list = ['January', 'Feburary', 'March', 'April', 'May', 'June', 'July',
-              'August', 'September', 'October', 'November', 'December']
-
-      month_actual_name = month_list[month]
-
-      moneyTowardsGoalPusInterest = in_account + our_contribution
-
-      return_list.append([period,in_account,moneyTowardsGoalPusInterest,month_actual_name])
-      their_contribution = their_contribution + monthly
       period = period + 1
     # now the remainder
     if(remainder > 0):
 
-      in_account = in_account + remainder
+        in_account += remainder
+        their_contribution += remainder
+        return_list.append([period,their_contribution,in_account,""])
+    print(our_contribution)
     return return_list, ((our_contribution/goal)*period)

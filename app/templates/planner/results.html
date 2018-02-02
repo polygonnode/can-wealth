@@ -35,6 +35,12 @@
       <h5 class="text-muted">Down : {{"$%.2f"|format(survey.down_payment)}}</h5>
       <h5 class="text-muted">Monthly: {{"$%.2f"|format(survey.monthly_payment)}}</h5>
     </div>
+    <div class="col-sm-6 text-right">
+      <h5> </h5>
+      <h5 class="text-muted">Our contribution to your goal:</h5>
+      <h5 class="text-muted"> {{"$%.2f"|format(survey.goal - months[-1][1])}}</h5>
+      <h5 class="text-muted"></h5>
+    </div>
 
 
   </div>
