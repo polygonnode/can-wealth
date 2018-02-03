@@ -1,0 +1,31 @@
+.bar {
+  fill: #0594C7;
+    opacity: 1;
+}
+.bar1 {
+  fill: #35495E;
+    opacity: 0.5;
+
+}
+.survey-bar{
+  height:0.5rem;
+  border-radius: 0;
+}
+
+.input-name{
+  font-size: 1.25rem !important;
+}
+.bar:hover {
+  fill: brown;
+}
+
+.axis--x path {
+  display: none;
+}
+
+.makeitscroll {
+  width:3000;
+}
+.badge-success{
+  background-color: #019589;
+}

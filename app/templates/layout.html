@@ -5,12 +5,88 @@
     <meta name="viewport" content="width=device-width">
     <title>{% block title %}CAN-Wealth{% endblock %}</title>
     <link href="{{ url_for('static', filename = 'css/index.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ url_for('static', filename = 'css/results.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ url_for('static', filename = 'lib/css/bootstrap.css') }}" rel="stylesheet" type="text/css" />
+
   </head>
-  <body>
+  <body style="background-color:#F2F3F4;min-height:100vh;">
+
+    <!-- Header nav bar containing everything across the top of the webpage -->
+    <nav id="top" class="navbar navbar-light bg-faded" style="background-color:white;">
+      <a class="navbar-brand" href="/">
+        <img src="/static/images/logo_text_right.png" class="nav navbar-nav navbar-left" style="height:3rem;" alt="">
+      </a>
+
+
+
+        <!-- Button that will trigger the modal to then bring up the form to input suggestions -->
+        <div >
+
+          <a href="#" class="nav-link"  style="display:inline-block;"data-toggle="modal" data-target="#myModal">Feedback</a>
+          <div class="align-middle" style="display:inline-block;height:1.75rem;">
+            <span class="badge badge-danger " style="font-size:1rem;display:inline-block;" data-toggle="tooltip" data-placement="bottom" title="This is our beta platform, give it a try and tell us what you think!">Beta</span>
+          <div>
+        </div>
+
+              <!-- Modal that will be triggered when the feedback button is clicked-->
+
+      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Give us some feedback</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form action="/feedback" method="POST">
+      <div class="modal-body">
+
+          <div class="form-group">
+            <label class = "formLabels">Email address</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com">
+          </div>
+          <div class="form-group">
+            <label class = "formLabels"> Please input your feedback/suggestions here: </label>
+            <textarea class="form-control" id="body" name="body" rows="3"></textarea>
+          </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary">Submit</button>
+
+        </div>
+        </form>
+    </div>
+  </div>
+</div>
+    </nav>
+
+
 
 
   {% block body %}
   {% endblock %}
 
-</body>
+    <footer class="footer text-white text-left" style="padding:1rem;background-color:#0594C7;position: fixed;bottom: 0;width:100%;">
+      <!--<div class="container">
+        <div style="border-bottom:2px solid white;margin-bottom:1rem;">
+
+
+        </div>
+      </div>-->
+
+       © 2018 Canadian Wealth Inc. , All rights reserved.
+      </footer>
+
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+      <script>
+
+      $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+</script>
+  </body>
 </html>
