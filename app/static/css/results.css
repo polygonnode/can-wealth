@@ -7,7 +7,14 @@
     opacity: 0.5;
 
 }
+.survey-bar{
+  height:0.5rem;
+  border-radius: 0;
+}
 
+.input-name{
+  font-size: 1.25rem !important;
+}
 .bar:hover {
   fill: brown;
 }
@@ -18,4 +25,7 @@
 
 .makeitscroll {
   width:3000;
+}
+.badge-success{
+  background-color: #019589;
 }

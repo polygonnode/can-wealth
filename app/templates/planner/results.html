@@ -25,23 +25,28 @@
 </style>
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <link href="{{ url_for('static', filename = 'css/results.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ url_for('static', filename = 'css/survey.css') }}" rel="stylesheet" type="text/css" />
+<div class="progress survey-bar">
+  <div id="progressBar" class="progress-bar " role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+</div>
 <div class="container" style="padding-top:1rem;">
   <h3>My saving plan for a  {{survey.title}} :</h3>
   <br>
-  <h5>With CANWealth you can reach your goal  {{ saved|int }} month(s) quicker! Now you can reach your goal in {{ months_total|int }} months.</h5>
+  <h5>With CANWealth you can reach your goal  {{ saved|int }} month(s) quicker! Now you can reach your goal in {{ months_total|int // 12 }} years and {{ months_total|int % 12 }}.</h5>
   <br>
 
   <div class="row ">
     <div class="col-sm-6">
 
-      <h5 class="text-muted">Total: {{"$%.2f"|format(survey.goal)}}</h5>
-      <h5 class="text-muted">Down : {{"$%.2f"|format(survey.down_payment)}}</h5>
-      <h5 class="text-muted">Monthly: {{"$%.2f"|format(survey.monthly_payment)}}</h5>
+      <h5 class="text-muted">The total amount I am saving up is: $<input type="text" class="blank-input input-name" value='{{"%.2f"|format(survey.goal)}}'> </h5>
+      <h5 class="text-muted">I am putting a down payment of:  $<input type="text" class="blank-input input-name" value='{{"%.2f"|format(survey.down_payment)}}'> </h5>
+      <h5 class="text-muted">Every month I can add:  $<input type="text" class="blank-input input-name" value='{{"%.2f"|format(survey.monthly_payment)}}'></h5>
+      <h5 class="text-muted"> My yearly income is:  $<input type="text" class="blank-input input-name" value='{{"%.2f"|format(survey.income)}}'> </h5>
     </div>
     <div class="col-sm-6 text-right">
 
       <h5 class="text-muted">Our contribution to your goal:</h5>
-      <h5 class="text-muted"> {{"$%.2f"|format(survey.goal - months[-1][1])}}</h5>
+      <h3 class="text-muted"><span class="badge badge-success"> {{"$%.2f"|format(survey.goal - months[-1][1])}} </span></h3>
 
     </div>
 
